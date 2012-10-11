@@ -1,4 +1,5 @@
 Gemfile.lock
+*.gemspec
 
 # rcov generated
 coverage
