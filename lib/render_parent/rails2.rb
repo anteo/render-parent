@@ -3,7 +3,7 @@ require 'action_view/base'
 ActionView::Base.class_eval do
   def render_parent_template(local_assigns = {}, &block)
     view_paths.exclusions << template
-    result = render({:file => template.to_s}, local_assigns, &block)
+    result = render(:file => template.to_s, :locals => local_assigns, &block)
     view_paths.exclusions.delete template
     result
   end

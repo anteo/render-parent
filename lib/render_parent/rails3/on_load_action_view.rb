@@ -5,7 +5,7 @@ ActionView::Helpers::RenderingHelper.module_eval do
   def render_parent_template(locals = {}, &block)
     template = controller.active_template
     view_paths.exclusions << template
-    result = render({:file => template.virtual_path}, locals, &block)
+    result = render(:file => template.virtual_path, :locals => locals, &block)
     view_paths.exclusions.delete template
     result
   end
@@ -29,11 +29,12 @@ ActionView::PathSet.class_eval do
   end
 
   def find_all_with_exclusions(path, prefixes = [], *args)
+    excluded = exclusions.map(&:identifier)
     prefixes = [prefixes] if String === prefixes
     prefixes.each do |prefix|
       paths.each do |resolver|
         templates = resolver.find_all(path, prefix, *args)
-        templates.delete_if {|t| exclusions.include? t}
+        templates.delete_if {|t| excluded.include? t.identifier}
         return templates unless templates.empty?
       end
     end
