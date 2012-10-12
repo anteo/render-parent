@@ -5,6 +5,7 @@ ActionView::Helpers::RenderingHelper.module_eval do
   def render_parent_template(locals = {}, &block)
     template = controller.active_template
     view_paths.exclusions << template
+    locals["__rendered_depth_#{view_paths.exclusions.count}"] = true
     result = render(:file => template.virtual_path, :locals => locals, &block)
     view_paths.exclusions.delete template
     result
