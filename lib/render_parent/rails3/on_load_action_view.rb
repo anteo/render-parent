@@ -6,7 +6,13 @@ ActionView::Helpers::RenderingHelper.module_eval do
     template = controller.active_template
     view_paths.exclusions << template
     locals["__rendered_depth_#{view_paths.exclusions.count}"] = true
-    result = render(:file => template.virtual_path, :locals => locals, &block)
+    handlers = ActionView::Template::Handlers.extensions.select do |ext|
+      ActionView::Template.handler_for_extension(ext) == template.handler
+    end
+    result = render(:template => template.virtual_path,
+                    :formats => template.formats,
+                    :handlers => handlers,
+                    :locals => locals, &block)
     view_paths.exclusions.delete template
     result
   end
