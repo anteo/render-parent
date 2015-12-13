@@ -1,6 +1,6 @@
 = render_parent
 
-Description goes here.
+Adds Rails "render :parent" helper, which renders template with the same name as current but higher on the view path
 
 == Contributing to render_parent
  
