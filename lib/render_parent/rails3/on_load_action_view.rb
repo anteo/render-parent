@@ -41,7 +41,7 @@ ActionView::PathSet.class_eval do
     prefixes.each do |prefix|
       paths.each do |resolver|
         templates = resolver.find_all(path, prefix, *args)
-        templates.delete_if {|t| excluded.include? t.identifier}
+        templates.delete_if {|t| excluded.include? t.identifier} unless templates.empty?
         return templates unless templates.empty?
       end
     end
