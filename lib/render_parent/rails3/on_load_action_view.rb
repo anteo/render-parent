@@ -1,5 +1,5 @@
 require 'action_view/helpers/rendering_helper'
-require 'action_view/renderer/template_renderer'
+require 'action_view/template'
 
 ActionView::Helpers::RenderingHelper.module_eval do
   def render_parent_template(locals = {}, &block)
@@ -51,26 +51,14 @@ ActionView::PathSet.class_eval do
   alias_method_chain :find_all, :exclusions
 end
 
-ActionView::TemplateRenderer.class_eval do
-  def render_template_with_active_template(template, layout_name = nil, locals = {})
-    template_stack = @view.controller.respond_to?(:active_template_stack) && @view.controller.active_template_stack
-    template_stack.push(template) if template_stack
-    result = render_template_without_active_template( template, layout_name, locals)
+ActionView::Template.class_eval do
+  def render_with_active_template(view, locals, buffer=nil, &block)
+    template_stack = view.controller.respond_to?(:active_template_stack) && view.controller.active_template_stack
+    template_stack.push(self) if template_stack
+    result = render_without_active_template(view, locals, buffer, &block)
     template_stack.pop if template_stack
     result
   end
 
-  alias_method_chain :render_template, :active_template
-end
-
-ActionView::PartialRenderer.class_eval do
-  def render_partial_with_active_template
-    template_stack = @view.controller.respond_to?(:active_template_stack) && @view.controller.active_template_stack
-    template_stack.push(@template) if template_stack
-    result = render_partial_without_active_template
-    template_stack.pop if template_stack
-    result
-  end
-
-  alias_method_chain :render_partial, :active_template
+  alias_method_chain :render, :active_template
 end
