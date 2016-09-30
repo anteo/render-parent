@@ -1,7 +1,4 @@
-require 'action_view/helpers/rendering_helper'
-require 'action_view/template'
-
-ActionView::Helpers::RenderingHelper.module_eval do
+ActionView::Base.class_eval do
   def render_parent_template(locals = {}, &block)
     template = controller.active_template
     view_paths.exclusions << template
