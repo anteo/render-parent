@@ -15,12 +15,12 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "render_parent"
-  gem.homepage = "http://github.com/anteo/render-parent"
+  gem.homepage = "http://github.com/MayamaTakesh/render_parent"
   gem.license = "MIT"
   gem.summary = %Q{Adds Rails "render :parent" helper, which renders template with the same name as current but higher on the view path}
   gem.description = %Q{This version fixes render_collection}
   gem.email = "anton.argirov@gmail.com"
-  gem.authors = ["Anton Argirov"]
+  gem.authors = ["Anton Argirov", "MayamaTakeshi"]
   gem.files = Dir.glob('lib/**/*.rb') + %w(.document Gemfile LICENSE.txt README.rdoc Rakefile VERSION)
   # dependencies defined in Gemfile
 end
