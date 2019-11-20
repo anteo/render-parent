@@ -1,1 +1,0 @@
-To create new render_parent.gemspec just update file VERSION and run: rake gemspec
