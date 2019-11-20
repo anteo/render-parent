@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Anton Argirov".freeze, "MayamaTakeshi".freeze]
-  s.date = "2017-09-21"
+  s.date = "2019-11-20"
   s.description = "This version fixes render_collection".freeze
   s.email = "anton.argirov@gmail.com".freeze
   s.extra_rdoc_files = [
@@ -35,9 +35,9 @@ Gem::Specification.new do |s|
     "lib/render_parent/rails5.rb",
     "lib/render_parent/rails5/on_load_action_view.rb"
   ]
-  s.homepage = "http://github.com/MayamaTakesh/render_parent".freeze
+  s.homepage = "http://github.com/anteo/render-parent".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "2.6.11".freeze
+  s.rubygems_version = "3.0.6".freeze
   s.summary = "Adds Rails \"render :parent\" helper, which renders template with the same name as current but higher on the view path".freeze
 
   if s.respond_to? :specification_version then
