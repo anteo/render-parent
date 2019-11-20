@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/anteo/render-parent".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.0.6".freeze
+  s.rubygems_version = "2.7.7".freeze
   s.summary = "Adds Rails \"render :parent\" helper, which renders template with the same name as current but higher on the view path".freeze
 
   if s.respond_to? :specification_version then
