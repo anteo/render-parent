@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.files = [
     ".ruby-gemset",
     ".ruby-version",
+    "Appraisals",
     "Gemfile",
     "LICENSE.txt",
     "README.rdoc",
